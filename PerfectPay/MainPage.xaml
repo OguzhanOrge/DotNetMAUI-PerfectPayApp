@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PerfectPay.MainPage"
+             BackgroundColor="#323232">
+
+    <ContentPage.Resources>
+        <Color x:Key="SectionColor">#789DBC</Color>
+        <Color x:Key="LightFont">#FFE3E3</Color>
+        <Color x:Key="DarkFont">#C9E9D2</Color>
+    </ContentPage.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".3*"/>
+            <RowDefinition Height=".7*"/>
+        </Grid.RowDefinitions>
+        <Frame Margin="10" Padding="15" BackgroundColor="{DynamicResource SectionColor}" BorderColor="Transparent">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".4*"/>
+                    <ColumnDefinition Width=".1*"/>
+                    <ColumnDefinition Width=".4*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=".2*"/>
+                    <RowDefinition Height=".8*"/>
+                </Grid.RowDefinitions>
+                <Label Text="Total Pay/Person" Grid.ColumnSpan="3" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" FontSize="Large" TextColor="{DynamicResource LightFont}"/>
+                <Label Grid.Row="1" Text="0.00 Tl" x:Name="lblTotal" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" FontSize="35" TextColor="{DynamicResource LightFont}" />
+                <BoxView Grid.Row="1" Grid.Column="1" Margin="0,10,0,0" VerticalOptions="Center" WidthRequest="2" HeightRequest="150" BackgroundColor="{DynamicResource LightFont}"/>
+                <VerticalStackLayout Grid.Column="2" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label Text="SUBTOTAL" TextColor="{DynamicResource LightFont}"/>
+                    <Label   HorizontalTextAlignment="Center" x:Name="lblSubTotal" Text="0.00 Tl" TextColor="{DynamicResource LightFont}"/>
+                    <Label HorizontalTextAlignment="Center" Margin="0,10,0,0" Text="TIP" TextColor="{DynamicResource LightFont}"/>
+                    <Label  HorizontalTextAlignment="Center" x:Name="lblTipByPerson" Text="0.00 Tl" TextColor="{DynamicResource LightFont}"/>
+                </VerticalStackLayout>
+            </Grid>
+        </Frame>
+        <Grid Grid.Row="1" Margin="10" Padding="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".3*"/>
+                <ColumnDefinition Width=".7*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Text="Enter Your Bills: " TextColor="{DynamicResource LightFont}" VerticalOptions="Center"/>
+            <Entry Completed="txtBill_Completed" BackgroundColor="{DynamicResource SectionColor}" x:Name="txtBill" Grid.Column="1"  Keyboard="Numeric" Text=" 0.00" TextColor="{DynamicResource LightFont}" VerticalOptions="Center"/>
+            <Label TextColor="{DynamicResource LightFont}" Text="Chose Yours TIP" VerticalOptions="Center" Grid.Row="1"/>
+            <HorizontalStackLayout Grid.Column="1" Grid.Row="1" HeightRequest="70">
+                <Button HeightRequest="70" WidthRequest="70" Text="%10" Margin="15,0,15,0" Clicked="Button_Clicked" BackgroundColor="{DynamicResource SectionColor}"/>
+                <Button HeightRequest="70" WidthRequest="70" Text="%15" Margin="0,0,15,0" Clicked="Button_Clicked" BackgroundColor="{DynamicResource SectionColor}" />
+                <Button HeightRequest="70" WidthRequest="70" Text="%20" Margin="0,0,15,0" Clicked="Button_Clicked" BackgroundColor="{DynamicResource SectionColor}"/>
+            </HorizontalStackLayout>
+            <Label x:Name="lblTİp"  Grid.Row="2" HorizontalOptions="Center"  VerticalOptions="Center" Text="TIP : 0%" TextColor="{DynamicResource LightFont}"/>
+            <Slider ValueChanged="sldTip_ValueChanged" x:Name="sldTip" Grid.Column="1" Grid.Row="2" Maximum="50" Minimum="0" ThumbColor="{DynamicResource SectionColor}"/>
+            <Label Grid.Row="3" HorizontalOptions="Center"  VerticalOptions="Center" Text="Split Total" TextColor="{DynamicResource LightFont}"/>
+            <HorizontalStackLayout Grid.Column="1" Grid.Row="3" HeightRequest="70">
+                <Button x:Name="btnMinus" HeightRequest="70"  WidthRequest="70" FontSize="Large" Text="-" Margin="15,0,5,0" Clicked="btnMinus_Clicked" BackgroundColor="{DynamicResource SectionColor}"/>
+                <Label x:Name="lblNoPerson" HeightRequest="70" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"  FontSize="Large" WidthRequest="70" Text="1" Margin="0,0,0,0" Background="White" TextColor="{DynamicResource SectionColor}" />
+                <Button x:Name="btnPlus" HeightRequest="70" WidthRequest="70" Text="+" FontSize="Large"  Margin="5,0,0,0" Clicked="btnPlus_Clicked" BackgroundColor="{DynamicResource SectionColor}"/>
+            </HorizontalStackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>
